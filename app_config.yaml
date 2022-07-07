@@ -1,0 +1,33 @@
+#Server configuration
+server:
+  bindIP: "127.0.0.1"
+  bindPort: 12345
+
+knx:
+  gatewayIP: "192.168.178.118"
+  gatewayPort: 3671
+  #Can be "tunnel" or "router"
+  gatewayType: tunnel
+
+postgres:
+  username: postgres
+  password: 
+  server: localhost
+  dbName: knxData
+  port: 5432
+  timeZone: Europe/Berlin
+
+datapoints:
+  DPT_9001:
+    - 12/0/0
+    - 12/0/1
+    - 12/0/2
+    - 12/0/3
+    - 12/0/4
+    - 12/0/5
+    - 12/0/6
+    - 12/0/7
+    - 12/0/9
+  DPT_14056:
+    - 6/1/0
+    - 6/1/1

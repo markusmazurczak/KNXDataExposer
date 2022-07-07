@@ -1,0 +1,14 @@
+level: debug
+development: false
+disableCaller: false
+disableStacktrace: false
+encoding: console
+outputPaths:
+  - stdout
+  #- app.log
+encoderConfig:
+  timeKey: time
+  timeEncoder: iso8601
+  messageKey: message
+  levelKey: level
+  levelEncoder: lowercase
