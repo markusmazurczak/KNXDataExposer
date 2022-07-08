@@ -35,3 +35,5 @@ go.work
 # Built Visual Studio Code Extensions
 *.vsix
 
+KNXDataExposer
+knx_data_exposer
