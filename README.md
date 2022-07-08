@@ -136,3 +136,6 @@ If you want to get data, simply do a HTTP-GET to */dataset* and put the group ad
 curl http://127.0.0.1:12345/dataset?ga=6/1/0 -H "Accept: application/json"
 {"ID":6,"CreatedAt":"2022-07-06T12:23:53.764244+02:00","UpdatedAt":"2022-07-06T12:23:53.764244+02:00","DeletedAt":null,"Group_Address":"6/1/0","Value":"1486.00","Unit":"W"}
 ```
+
+## Container
+There is also an container image in [Dockerhub](https://hub.docker.com/r/shelltux/knx_data_exposer). There you can also find an Docker-Stack example using an *integrated* postgres-image running all behind an traefik reverse proxy.
