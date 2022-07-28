@@ -149,3 +149,9 @@ USER="shelltux"
 # Set your manifest name
 MANIFEST_NAME="multiarch-knx_data_exposer"
 ```
+
+To finaly build the container execute
+```bash
+sh build_buildah.sh
+```
+from the same directory.
