@@ -12,7 +12,7 @@ COPY *.yaml go.* *.go LICENSE README.md .
 RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -o /app/KNXDataExposer
 
 FROM alpine:latest
+COPY --from=builder /app/KNXDataExposer /
 WORKDIR /app
-COPY --from=builder /app/KNXDataExposer .
 COPY --from=builder /app/*.yaml .
-ENTRYPOINT ["/app/KNXDataExposer"]
+ENTRYPOINT ["/KNXDataExposer"]
