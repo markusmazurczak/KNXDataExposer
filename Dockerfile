@@ -1,15 +1,18 @@
 # syntax=docker/dockerfile:1
+FROM --platform=$BUILDPLATFORM docker.io/golang:1.18-alpine3.15 as builder
 
-FROM alpine
+ARG TARGETOS TARGETARCH
 
-RUN apk update
-RUN apk upgrade
-RUN apk add bash
-RUN apk add --no-cache libc6-compat 
-
-COPY KNXDataExposer /
 WORKDIR /app
-COPY *.yaml .
-EXPOSE 12345
-ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
-CMD [ "/KNXDataExposer" ]
+COPY db ./db
+COPY handler ./handler
+COPY knx ./knx
+COPY util ./util
+COPY *.yaml go.* *.go LICENSE README.md .
+RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -o /app/KNXDataExposer
+
+FROM alpine:latest
+WORKDIR /app
+COPY --from=builder /app/KNXDataExposer .
+COPY --from=builder /app/*.yaml .
+ENTRYPOINT ["/app/KNXDataExposer"]

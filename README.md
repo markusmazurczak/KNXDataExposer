@@ -139,3 +139,13 @@ curl http://127.0.0.1:12345/dataset?ga=6/1/0 -H "Accept: application/json"
 
 ## Container
 There is also an container image in [Dockerhub](https://hub.docker.com/r/shelltux/knx_data_exposer). There you can also find an Docker-Stack example using an *integrated* postgres-image running all behind an traefik reverse proxy.
+Currently the binary is cross-build for AMD64, ARM and ARM64 Architectures. I could at least test it on an AMD64 and an ARM64 (RaspberryPI4).
+### Building
+To build the tool, you can use the provided *Dockerfile* and the *build_buildah.sh* Script.
+You have to install *qemu-user-static* (or *qemu-arch-extra* if you are on Arch or Manjaro), *podman* und *buildah* and you have to modify the following variables in *build_buildah.sh* to your needs:
+```bash
+REGISTRY="docker.io"
+USER="shelltux"
+# Set your manifest name
+MANIFEST_NAME="multiarch-knx_data_exposer"
+```
